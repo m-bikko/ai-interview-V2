@@ -249,6 +249,9 @@ p {
 .stat-content > *{
   color: white;
 }
+.ai-review{
+  color: white;
+}
 .centerr{
   display: flex;
   flex-direction: column;

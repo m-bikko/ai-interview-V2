@@ -76,13 +76,13 @@
                     <div class="col-md-6">
                         <div class="d-flex align-items-center mb-2">
                             <i class="fas fa-calendar-alt text-primary me-2"></i>
-                            <span class="fw-medium">{{ interview.created_at.strftime('%B %d, %Y at %H:%M') }}</span>
+                            <span class="white fw-medium">{{ interview.created_at.strftime('%B %d, %Y at %H:%M') }}</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex align-items-center mb-2">
                             <i class="fas fa-question-circle text-primary me-2"></i>
-                            <span class="fw-medium">{{ interview.answers|length }} Questions Answered</span>
+                            <span class="white fw-medium">{{ interview.answers|length }} Questions Answered</span>
                         </div>
                     </div>
                 </div>
@@ -152,18 +152,18 @@
     {% for answer in interview.answers %}
         <div class="card border-0 shadow-sm mb-3">
             <div class="card-header bg-white p-0">
-                <button class="accordion-button {% if not loop.first %}collapsed{% endif %} p-4" type="button" 
+                <button style="color: rgb(0, 0, 0);" class="accordion-button {% if not loop.first %}collapsed{% endif %} p-4" type="button" 
                         data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" 
                         aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" 
                         aria-controls="collapse{{ loop.index }}">
                     <div class="d-flex align-items-center w-100">
                         <div class="question-number-badge me-3">{{ loop.index }}</div>
                         <div class="flex-grow-1">
-                            <h5 class="mb-0 fw-semibold">{{ answer.question_text|truncate(80) }}</h5>
+                            <h5 style="color: rgb(0, 0, 0);" class="mb-0 fw-semibold">{{ answer.question_text|truncate(80) }}</h5>
                         </div>
                         {% if answer.rating is not none %}
                             <div class="ms-3">
-                                <span class="badge 
+                                <span style="color: rgb(0, 0, 0);" class="badge 
                                     {% if answer.rating >= 4.0 %}badge-success
                                     {% elif answer.rating >= 3.0 %}badge-info
                                     {% elif answer.rating >= 2.0 %}badge-warning
@@ -183,7 +183,7 @@
                             <h5 class="fw-semibold mb-3">
                                 <i class="fas fa-microphone text-primary me-2"></i> Your Answer
                             </h5>
-                            <p class="mb-4">{{ answer.transcribed_text }}</p>
+                            <p class="white mb-4">{{ answer.transcribed_text }}</p>
                             
                             {% if answer.audio_path %}
                                 <div class="audio-player bg-light rounded p-3">
@@ -200,7 +200,7 @@
                             <h5 class="fw-semibold mb-3">
                                 <i class="fas fa-robot text-primary me-2"></i> AI Feedback
                             </h5>
-                            <div class="p-4 bg-light rounded">
+                            <div class="p-4 white bg-light rounded">
                                 {{ answer.feedback|safe|nl2br }}
                             </div>
                         </div>
