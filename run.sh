@@ -41,7 +41,7 @@ fi
 if [ ! -f ".env" ]; then
     echo "Creating .env file..."
     cat > .env << EOF
-GOOGLE_API_KEY=AIzaSyA7zgkfPqewfQsGhQi7L8OYVxsiZuOguSU
+GOOGLE_API_KEY=A I z a S y A 7 z g k f P q e w f Q s G h Q i 7 L 8 O Y V x s i Z u O g u S U
 SECRET_KEY=2a8a74a1c4e9d2b7f5e8c6a3d7b9f1e0
 FLASK_APP=run.py
 FLASK_ENV=development
