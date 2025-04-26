@@ -1,0 +1,159 @@
+{% extends "modern_layout.html" %}
+
+{% block title %}{{ profession.name }} - {{ grade }}{% endblock %}
+
+{% block authenticated_content %}
+<div class="mb-4">
+    <div class="d-flex align-items-center mb-2">
+        <a href="{{ url_for('catalog.index') }}" class="btn btn-sm btn-ghost me-2">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1 class="fw-bold mb-0">{{ profession.name }}</h1>
+        <span class="badge badge-primary ms-3">{{ grade }}</span>
+    </div>
+    <p class="text-muted">Practice technical interview questions for {{ grade }} level {{ profession.name }} roles.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3">Start a New Interview</h4>
+                <p class="mb-4 white">This interview will consist of 5 random questions for a {{ grade }} {{ profession.name }}. You'll be able to record your answers and receive AI-generated feedback on each response.</p>
+                
+                <div class="d-flex align-items-center">
+                    <form action="{{ url_for('interview.start_interview', profession_id=profession.id, grade=grade) }}" method="POST">
+                        <button type="submit" class="btn btn-primary btn-lg px-4">
+                            <i class="fas fa-play-circle me-2"></i> Take Interview Now
+                        </button>
+                    </form>
+                    
+                    {% if total_interviews > 0 %}
+                    <div class="ms-4 text-muted">
+                        <small>You've completed <strong>{{ total_interviews }}</strong> interviews in this category</small>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        {% if recent_interviews %}
+        <div class="card shadow-sm border-0">
+            <div class="card-header p-4 border-0">
+                <h4 class="fw-bold mb-0">Recent Interview History</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">Date</th>
+                                <th>Rating</th>
+                                <th>Status</th>
+                                <th class="pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for interview in recent_interviews %}
+                                <tr>
+                                    <td class="ps-4">{{ interview.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>
+                                        {% if interview.overall_rating %}
+                                            {% if interview.overall_rating >= 4.0 %}
+                                                {% set rating_class = 'success' %}
+                                            {% elif interview.overall_rating >= 3.0 %}
+                                                {% set rating_class = 'info' %}
+                                            {% elif interview.overall_rating >= 2.0 %}
+                                                {% set rating_class = 'warning' %}
+                                            {% else %}
+                                                {% set rating_class = 'error' %}
+                                            {% endif %}
+                                            <div class="d-flex align-items-center">
+                                                <div class="rating-bar me-2" style="width: 60px;">
+                                                    <div class="rating-bar-fill rating-{{ rating_class }}" style="width: {{ (interview.overall_rating / 5) * 100 }}%;"></div>
+                                                </div>
+                                                <span>{{ interview.overall_rating }}/5</span>
+                                            </div>
+                                        {% else %}
+                                            <span class="badge badge-gray">Not rated</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if interview.completed_at %}
+                                            <span class="badge badge-success">Completed</span>
+                                        {% else %}
+                                            <span class="badge badge-warning">In Progress</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="pe-4">
+                                        {% if interview.completed_at %}
+                                            <a href="{{ url_for('history.interview_detail', interview_id=interview.id) }}" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-eye me-1"></i> View
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ url_for('interview.process', interview_id=interview.id) }}" class="btn btn-sm btn-warning">
+                                                <i class="fas fa-play me-1"></i> Continue
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                {% if total_interviews > 5 %}
+                    <div class="text-center py-3 border-top">
+                        <a href="{{ url_for('history.index') }}" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-history me-1"></i> View All History
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-3">Interview Stats</h5>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="avatar avatar-lg bg-primary-light text-primary me-3">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 white fw-semibold">Total Interviews</p>
+                        <h3 class="fw-bold mb-0">{{ total_interviews }}</h3>
+                    </div>
+                </div>
+                
+                {% if recent_interviews and recent_interviews|length > 0 and recent_interviews[0].overall_rating %}
+                <div class="d-flex align-items-center">
+                    <div class="avatar avatar-lg bg-success-light text-success me-3">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 fw-semibold">Latest Rating</p>
+                        <h3 class="fw-bold mb-0">{{ recent_interviews[0].overall_rating }}/5.0</h3>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-3">Interview Tips</h5>
+                <ul class="mb-0 ps-3">
+                    <li class="mb-2 white">Speak clearly and at a moderate pace</li>
+                    <li class="mb-2 white">Structure your answers with an introduction, main points, and conclusion</li>
+                    <li class="mb-2 white">Use specific examples from your experience</li>
+                    <li class="mb-2 white">Keep your answers concise (1-2 minutes per question)</li>
+                    <li class="mb-0 white">Review feedback to improve future responses</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

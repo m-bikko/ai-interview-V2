@@ -1,0 +1,2162 @@
+[
+  {
+    "id": 1,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between GET and POST HTTP methods?"
+  },
+  {
+    "id": 2,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of RESTful APIs."
+  },
+  {
+    "id": 3,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between SQL and NoSQL databases?"
+  },
+  {
+    "id": 4,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What are environment variables and why are they important?"
+  },
+  {
+    "id": 5,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "Explain the MVC (Model-View-Controller) pattern."
+  },
+  {
+    "id": 6,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is CRUD and how does it relate to RESTful APIs?"
+  },
+  {
+    "id": 7,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is a package manager and why is it useful?"
+  },
+  {
+    "id": 8,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "Describe the difference between synchronous and asynchronous programming."
+  },
+  {
+    "id": 9,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is version control and why is it important for development?"
+  },
+  {
+    "id": 10,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is API rate limiting and why is it important?"
+  },
+  {
+    "id": 11,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "Explain what a database index is and why it's important."
+  },
+  {
+    "id": 12,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is a middleware in the context of web frameworks?"
+  },
+  {
+    "id": 13,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of HTTP status codes?"
+  },
+  {
+    "id": 14,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What are environment variables and why are they used in backend development?"
+  },
+  {
+    "id": 15,
+    "profession": "Backend Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between authentication and authorization?"
+  },
+  {
+    "id": 16,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of database normalization and when you might want to denormalize."
+  },
+  {
+    "id": 17,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "What are design patterns and can you describe a few you've used?"
+  },
+  {
+    "id": 18,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "How would you approach API versioning and why is it important?"
+  },
+  {
+    "id": 19,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of database transactions and ACID properties."
+  },
+  {
+    "id": 20,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "What are the key considerations for making an API secure?"
+  },
+  {
+    "id": 21,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "Describe the differences between horizontal and vertical scaling."
+  },
+  {
+    "id": 22,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "What is eventual consistency in distributed systems?"
+  },
+  {
+    "id": 23,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of idempotency in RESTful APIs."
+  },
+  {
+    "id": 24,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "What are webhooks and how are they different from regular APIs?"
+  },
+  {
+    "id": 25,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "How would you approach database migration and schema evolution?"
+  },
+  {
+    "id": 26,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "What is the N+1 query problem and how would you solve it?"
+  },
+  {
+    "id": 27,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "Explain caching strategies in backend applications. When and where would you use them?"
+  },
+  {
+    "id": 28,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "What is the difference between stateless and stateful applications?"
+  },
+  {
+    "id": 29,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "How do you handle error response design in an API?"
+  },
+  {
+    "id": 30,
+    "profession": "Backend Developer",
+    "grade": "Middle",
+    "question_text": "Describe how you would implement authentication using JWT (JSON Web Tokens)."
+  },
+  {
+    "id": 31,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "Discuss the trade-offs between monolithic and microservice architectures."
+  },
+  {
+    "id": 32,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "How would you design a system that needs to handle millions of concurrent requests?"
+  },
+  {
+    "id": 33,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "Explain the CAP theorem and its implications for distributed database systems."
+  },
+  {
+    "id": 34,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "How would you approach designing a rate-limiting system that works across multiple server instances?"
+  },
+  {
+    "id": 35,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "Describe your approach to building maintainable and testable code in large-scale applications."
+  },
+  {
+    "id": 36,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "How would you design a distributed logging and monitoring system?"
+  },
+  {
+    "id": 37,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "What strategies would you use for database sharding, and what are the trade-offs?"
+  },
+  {
+    "id": 38,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "Explain how you would design a fault-tolerant system with high availability."
+  },
+  {
+    "id": 39,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "How do you approach technical debt in a large codebase?"
+  },
+  {
+    "id": 40,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "Discuss the challenges of implementing a consistent deployment pipeline for a complex application."
+  },
+  {
+    "id": 41,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "How would you design an event-driven architecture for a complex system?"
+  },
+  {
+    "id": 42,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "Explain the concept of eventual consistency and when it's appropriate to use."
+  },
+  {
+    "id": 43,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "How do you approach API design to ensure long-term maintainability and backward compatibility?"
+  },
+  {
+    "id": 44,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "Describe strategies for efficient data processing with very large datasets."
+  },
+  {
+    "id": 45,
+    "profession": "Backend Developer",
+    "grade": "Senior",
+    "question_text": "How would you design authentication and authorization in a microservices environment?"
+  },
+  {
+    "id": 46,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is the DOM and how does JavaScript interact with it?"
+  },
+  {
+    "id": 47,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "Explain the difference between localStorage, sessionStorage, and cookies."
+  },
+  {
+    "id": 48,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is the box model in CSS?"
+  },
+  {
+    "id": 49,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "Describe the difference between inline, block, and inline-block elements."
+  },
+  {
+    "id": 50,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is responsive design and why is it important?"
+  },
+  {
+    "id": 51,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of CSS specificity."
+  },
+  {
+    "id": 52,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of semantic HTML?"
+  },
+  {
+    "id": 53,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is a JavaScript event and how would you handle one?"
+  },
+  {
+    "id": 54,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is a CSS framework and can you name some popular ones?"
+  },
+  {
+    "id": 55,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of AJAX."
+  },
+  {
+    "id": 56,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What are media queries and how do they work?"
+  },
+  {
+    "id": 57,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between var, let, and const in JavaScript?"
+  },
+  {
+    "id": 58,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is CSS flexbox and what problem does it solve?"
+  },
+  {
+    "id": 59,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of mobile-first design."
+  },
+  {
+    "id": 60,
+    "profession": "Frontend Developer",
+    "grade": "Junior",
+    "question_text": "What is event bubbling in JavaScript?"
+  },
+  {
+    "id": 61,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "Describe the difference between client-side and server-side rendering."
+  },
+  {
+    "id": 62,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "What are JavaScript Promises and why are they useful?"
+  },
+  {
+    "id": 63,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of CSS Grid and how it differs from Flexbox."
+  },
+  {
+    "id": 64,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "What is a Single Page Application (SPA) and what are its advantages and disadvantages?"
+  },
+  {
+    "id": 65,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "How would you optimize a website's performance on the front end?"
+  },
+  {
+    "id": 66,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of state management in frontend frameworks."
+  },
+  {
+    "id": 67,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "What are service workers and how can they be used to create offline experiences?"
+  },
+  {
+    "id": 68,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "Describe your approach to debugging JavaScript issues."
+  },
+  {
+    "id": 69,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "What are Web Components and what problems do they solve?"
+  },
+  {
+    "id": 70,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of CSS preprocessing and its benefits."
+  },
+  {
+    "id": 71,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "What is tree shaking in JavaScript and why is it important for performance?"
+  },
+  {
+    "id": 72,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "Explain the difference between async/await and Promises in JavaScript."
+  },
+  {
+    "id": 73,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "What is CORS and how does it affect frontend development?"
+  },
+  {
+    "id": 74,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "Describe your approach to creating accessible web applications."
+  },
+  {
+    "id": 75,
+    "profession": "Frontend Developer",
+    "grade": "Middle",
+    "question_text": "What are the key considerations when designing for different screen sizes and devices?"
+  },
+  {
+    "id": 76,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How would you architect a large-scale frontend application for maintainability and scalability?"
+  },
+  {
+    "id": 77,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "Explain advanced state management patterns and when you would use each."
+  },
+  {
+    "id": 78,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How would you approach performance optimization for a complex web application?"
+  },
+  {
+    "id": 79,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "Describe your experience with build systems, module bundlers, and transpilers."
+  },
+  {
+    "id": 80,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How would you implement a comprehensive testing strategy for a frontend application?"
+  },
+  {
+    "id": 81,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "Discuss micro-frontend architecture and its implications."
+  },
+  {
+    "id": 82,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How would you approach internationalization and localization in a complex application?"
+  },
+  {
+    "id": 83,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "Explain advanced CSS techniques and methodologies for large-scale applications."
+  },
+  {
+    "id": 84,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How do you handle authentication, authorization, and security concerns in frontend development?"
+  },
+  {
+    "id": 85,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "Discuss strategies for implementing complex UI interactions and animations efficiently."
+  },
+  {
+    "id": 86,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How would you design and implement a design system for a large organization?"
+  },
+  {
+    "id": 87,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "Explain your approach to frontend error handling, monitoring, and debugging in production."
+  },
+  {
+    "id": 88,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How would you optimize for Core Web Vitals and other modern performance metrics?"
+  },
+  {
+    "id": 89,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "Discuss your strategy for keeping up with rapidly evolving frontend technologies and frameworks."
+  },
+  {
+    "id": 90,
+    "profession": "Frontend Developer",
+    "grade": "Senior",
+    "question_text": "How do you approach accessibility beyond the basics to create truly inclusive applications?"
+  },
+  {
+    "id": 91,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What does it mean to be a full-stack developer?"
+  },
+  {
+    "id": 92,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "Explain the difference between frontend and backend development."
+  },
+  {
+    "id": 93,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is HTTP and how does it work?"
+  },
+  {
+    "id": 94,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "Describe the client-server model."
+  },
+  {
+    "id": 95,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is an API and why is it important for full-stack development?"
+  },
+  {
+    "id": 96,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of a database and name some common types."
+  },
+  {
+    "id": 97,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is responsive design and why is it important?"
+  },
+  {
+    "id": 98,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is version control and why is it important in development?"
+  },
+  {
+    "id": 99,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "Explain the basic structure of an HTML document."
+  },
+  {
+    "id": 100,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is a web framework and why is it useful?"
+  },
+  {
+    "id": 101,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between GET and POST HTTP methods?"
+  },
+  {
+    "id": 102,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "Explain basic CRUD operations and their HTTP method equivalents."
+  },
+  {
+    "id": 103,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is JSON and how is it used in web development?"
+  },
+  {
+    "id": 104,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What are environment variables and why are they important in development?"
+  },
+  {
+    "id": 105,
+    "profession": "Full Stack Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between a relational and non-relational database?"
+  },
+  {
+    "id": 106,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "How do you handle communication between frontend and backend in a full-stack application?"
+  },
+  {
+    "id": 107,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of authentication and authorization in web applications."
+  },
+  {
+    "id": 108,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "What are some common ways to handle state management in frontend frameworks?"
+  },
+  {
+    "id": 109,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "Describe how you would approach database schema design for a new application."
+  },
+  {
+    "id": 110,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "How do you handle form validation on both client and server sides?"
+  },
+  {
+    "id": 111,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "What is an ORM and what are its advantages and disadvantages?"
+  },
+  {
+    "id": 112,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of middleware in web frameworks."
+  },
+  {
+    "id": 113,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "How would you approach building a RESTful API?"
+  },
+  {
+    "id": 114,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "What are some strategies for optimizing web application performance?"
+  },
+  {
+    "id": 115,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "Explain the concept of JWT (JSON Web Tokens) for authentication."
+  },
+  {
+    "id": 116,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "How do you handle error handling across the full stack?"
+  },
+  {
+    "id": 117,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "What are some approaches to testing full-stack applications?"
+  },
+  {
+    "id": 118,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "Explain the difference between server-side rendering and client-side rendering."
+  },
+  {
+    "id": 119,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "What is CORS and how do you handle it in a full-stack application?"
+  },
+  {
+    "id": 120,
+    "profession": "Full Stack Developer",
+    "grade": "Middle",
+    "question_text": "Describe your approach to securing a full-stack application."
+  },
+  {
+    "id": 121,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How would you architect a scalable full-stack application from scratch?"
+  },
+  {
+    "id": 122,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "Discuss the trade-offs between monolithic and microservice architectures."
+  },
+  {
+    "id": 123,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How would you approach database scaling and optimization for a high-traffic application?"
+  },
+  {
+    "id": 124,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "Explain your strategy for implementing a CI/CD pipeline for a full-stack application."
+  },
+  {
+    "id": 125,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How do you approach security across the entire stack in a complex application?"
+  },
+  {
+    "id": 126,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to handling real-time features in a full-stack application."
+  },
+  {
+    "id": 127,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How would you implement caching strategies across a full-stack application?"
+  },
+  {
+    "id": 128,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "Explain your approach to code organization and modularity in large full-stack applications."
+  },
+  {
+    "id": 129,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How do you handle authentication and authorization in a microservices environment?"
+  },
+  {
+    "id": 130,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "Discuss strategies for monitoring and debugging issues in production across the full stack."
+  },
+  {
+    "id": 131,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How would you approach building a performant and accessible frontend for a complex application?"
+  },
+  {
+    "id": 132,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "What strategies would you use for handling database migrations and schema evolution?"
+  },
+  {
+    "id": 133,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How do you balance technical debt with new feature development in a complex application?"
+  },
+  {
+    "id": 134,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "Explain your approach to handling internationalization and localization in a full-stack application."
+  },
+  {
+    "id": 135,
+    "profession": "Full Stack Developer",
+    "grade": "Senior",
+    "question_text": "How would you design an API that needs to evolve over time while maintaining backward compatibility?"
+  },
+  {
+    "id": 136,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is the difference between supervised and unsupervised learning?"
+  },
+  {
+    "id": 137,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "Explain the concept of overfitting and how to prevent it."
+  },
+  {
+    "id": 138,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is the purpose of splitting data into training and testing sets?"
+  },
+  {
+    "id": 139,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "Explain the difference between classification and regression."
+  },
+  {
+    "id": 140,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is data normalization and why is it important?"
+  },
+  {
+    "id": 141,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is exploratory data analysis (EDA) and why is it important?"
+  },
+  {
+    "id": 142,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "Explain the concept of feature engineering."
+  },
+  {
+    "id": 143,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is cross-validation and why is it used?"
+  },
+  {
+    "id": 144,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "Describe the difference between correlation and causation."
+  },
+  {
+    "id": 145,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is a confusion matrix and what metrics can be derived from it?"
+  },
+  {
+    "id": 146,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "Explain the concept of bias-variance tradeoff."
+  },
+  {
+    "id": 147,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is the difference between a data scientist and a data analyst?"
+  },
+  {
+    "id": 148,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "Explain the concept of dimensionality reduction and why it's important."
+  },
+  {
+    "id": 149,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "What is the purpose of data visualization in data science?"
+  },
+  {
+    "id": 150,
+    "profession": "Data Scientist",
+    "grade": "Junior",
+    "question_text": "Describe the difference between parametric and non-parametric models."
+  },
+  {
+    "id": 151,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "Explain the working principles of gradient boosting algorithms."
+  },
+  {
+    "id": 152,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "How would you handle imbalanced datasets in classification problems?"
+  },
+  {
+    "id": 153,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "Explain the concept of regularization in machine learning models."
+  },
+  {
+    "id": 154,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "What is the curse of dimensionality and how does it affect machine learning models?"
+  },
+  {
+    "id": 155,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "Describe different approaches to handle missing data in a dataset."
+  },
+  {
+    "id": 156,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "How do you evaluate the performance of a regression model?"
+  },
+  {
+    "id": 157,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "Explain the concept of ensemble methods in machine learning."
+  },
+  {
+    "id": 158,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "What is the difference between bagging and boosting?"
+  },
+  {
+    "id": 159,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "How would you approach feature selection for a machine learning model?"
+  },
+  {
+    "id": 160,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "Explain the concept of time series analysis and some common techniques."
+  },
+  {
+    "id": 161,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "What is the difference between a generative and discriminative model?"
+  },
+  {
+    "id": 162,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "How would you handle outliers in your dataset?"
+  },
+  {
+    "id": 163,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "Describe different clustering algorithms and their use cases."
+  },
+  {
+    "id": 164,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "What is the difference between L1 and L2 regularization?"
+  },
+  {
+    "id": 165,
+    "profession": "Data Scientist",
+    "grade": "Middle",
+    "question_text": "Explain the concept of model deployment and monitoring in a production environment."
+  },
+  {
+    "id": 166,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How would you design an end-to-end machine learning pipeline for a complex real-world problem?"
+  },
+  {
+    "id": 167,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "Discuss the ethical considerations in building and deploying AI and ML models."
+  },
+  {
+    "id": 168,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How would you approach building and maintaining a recommendation system at scale?"
+  },
+  {
+    "id": 169,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "Explain your approach to model interpretability for complex machine learning models."
+  },
+  {
+    "id": 170,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How would you design a system to detect anomalies in real-time data streams?"
+  },
+  {
+    "id": 171,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "Discuss the trade-offs between model accuracy and interpretability in business contexts."
+  },
+  {
+    "id": 172,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How would you approach multi-objective optimization problems in machine learning?"
+  },
+  {
+    "id": 173,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "Describe your experience with distributed computing frameworks for large-scale data processing."
+  },
+  {
+    "id": 174,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How do you approach experimental design for A/B testing and causal inference?"
+  },
+  {
+    "id": 175,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "Explain your approach to building and deploying models with fairness and bias considerations."
+  },
+  {
+    "id": 176,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How would you design a system for continuous training and evaluation of models in production?"
+  },
+  {
+    "id": 177,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "Discuss advanced techniques for dealing with highly imbalanced datasets or rare events."
+  },
+  {
+    "id": 178,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How would you approach transfer learning for a domain with limited labeled data?"
+  },
+  {
+    "id": 179,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "Describe your approach to building hybrid models that combine different techniques or data sources."
+  },
+  {
+    "id": 180,
+    "profession": "Data Scientist",
+    "grade": "Senior",
+    "question_text": "How do you balance research innovation with practical business implementation in data science projects?"
+  },
+  {
+    "id": 181,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What is the role of a product manager?"
+  },
+  {
+    "id": 182,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "Explain the difference between a product manager and a project manager."
+  },
+  {
+    "id": 183,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What are user stories and how do you write good ones?"
+  },
+  {
+    "id": 184,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What is a product roadmap and why is it important?"
+  },
+  {
+    "id": 185,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "Explain the concept of MVP (Minimum Viable Product)."
+  },
+  {
+    "id": 186,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "How do you gather and prioritize product requirements?"
+  },
+  {
+    "id": 187,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What is the difference between outputs and outcomes in product management?"
+  },
+  {
+    "id": 188,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What are some key performance indicators (KPIs) for measuring product success?"
+  },
+  {
+    "id": 189,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "How do you work with designers in the product development process?"
+  },
+  {
+    "id": 190,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What is the difference between agile and waterfall development methodologies?"
+  },
+  {
+    "id": 191,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "How do you conduct user research and what methods might you use?"
+  },
+  {
+    "id": 192,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What is a product backlog and how do you manage it?"
+  },
+  {
+    "id": 193,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "Explain the concept of user personas and why they are useful."
+  },
+  {
+    "id": 194,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "What is A/B testing and when would you use it?"
+  },
+  {
+    "id": 195,
+    "profession": "Product Manager",
+    "grade": "Junior",
+    "question_text": "How do you communicate product status and changes to stakeholders?"
+  },
+  {
+    "id": 196,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you balance stakeholder needs with user needs in product development?"
+  },
+  {
+    "id": 197,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "Explain your approach to product prioritization and trade-off decisions."
+  },
+  {
+    "id": 198,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you integrate data-driven decision making into your product management process?"
+  },
+  {
+    "id": 199,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "Describe your approach to product strategy and aligning it with business goals."
+  },
+  {
+    "id": 200,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you handle technical debt in your product planning?"
+  },
+  {
+    "id": 201,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "What frameworks do you use for feature prioritization?"
+  },
+  {
+    "id": 202,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you collaborate with engineering teams to ensure successful product delivery?"
+  },
+  {
+    "id": 203,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "Describe how you would approach launching a new product or feature."
+  },
+  {
+    "id": 204,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you measure and analyze user behavior to inform product decisions?"
+  },
+  {
+    "id": 205,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "What is a product hypothesis and how do you test it?"
+  },
+  {
+    "id": 206,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you handle scope creep during product development?"
+  },
+  {
+    "id": 207,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "Explain how you would approach competitive analysis for a product."
+  },
+  {
+    "id": 208,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you handle product feedback from users and internal stakeholders?"
+  },
+  {
+    "id": 209,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "Describe your approach to developing a pricing strategy for a product."
+  },
+  {
+    "id": 210,
+    "profession": "Product Manager",
+    "grade": "Middle",
+    "question_text": "How do you balance short-term wins with long-term product vision?"
+  },
+  {
+    "id": 211,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How would you approach developing a product strategy for a new market or vertical?"
+  },
+  {
+    "id": 212,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "Discuss your experience with organizational alignment around product vision and strategy."
+  },
+  {
+    "id": 213,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How do you measure product success beyond basic usage metrics?"
+  },
+  {
+    "id": 214,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How would you approach scaling a product organization as the company grows?"
+  },
+  {
+    "id": 215,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "Describe your approach to managing product portfolios and cross-product initiatives."
+  },
+  {
+    "id": 216,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How do you balance innovation with maintaining and improving existing products?"
+  },
+  {
+    "id": 217,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to making product decisions under uncertainty or with limited data."
+  },
+  {
+    "id": 218,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How would you approach internationalization and localization for a global product?"
+  },
+  {
+    "id": 219,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "Describe your approach to creating and evangelizing a compelling product vision."
+  },
+  {
+    "id": 220,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How do you handle competing priorities across different product teams or business units?"
+  },
+  {
+    "id": 221,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How would you approach transforming a declining or legacy product?"
+  },
+  {
+    "id": 222,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to building relationships with executive stakeholders and influencing without authority."
+  },
+  {
+    "id": 223,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How do you identify and evaluate new product opportunities or market expansions?"
+  },
+  {
+    "id": 224,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "Describe your experience with product-led growth strategies."
+  },
+  {
+    "id": 225,
+    "profession": "Product Manager",
+    "grade": "Senior",
+    "question_text": "How do you balance customer-centricity with business realities in product decisions?"
+  },
+  {
+    "id": 226,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is DevOps and why is it important?"
+  },
+  {
+    "id": 227,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of Continuous Integration and Continuous Deployment (CI/CD)."
+  },
+  {
+    "id": 228,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is version control and why is it important in DevOps?"
+  },
+  {
+    "id": 229,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "Explain the difference between containers and virtual machines."
+  },
+  {
+    "id": 230,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is Docker and how does it work?"
+  },
+  {
+    "id": 231,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is Infrastructure as Code (IaC) and why is it important?"
+  },
+  {
+    "id": 232,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is a pipeline in the context of CI/CD?"
+  },
+  {
+    "id": 233,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "Explain basic Linux commands that are important for a DevOps engineer."
+  },
+  {
+    "id": 234,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is configuration management and why is it important?"
+  },
+  {
+    "id": 235,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is monitoring and logging, and why are they important in DevOps?"
+  },
+  {
+    "id": 236,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is a deployment strategy and can you name a few common ones?"
+  },
+  {
+    "id": 237,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of a load balancer?"
+  },
+  {
+    "id": 238,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of microservices architecture."
+  },
+  {
+    "id": 239,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is a reverse proxy and when would you use one?"
+  },
+  {
+    "id": 240,
+    "profession": "DevOps Engineer",
+    "grade": "Junior",
+    "question_text": "What is the difference between stateless and stateful applications?"
+  },
+  {
+    "id": 241,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "How would you design a CI/CD pipeline for a microservices architecture?"
+  },
+  {
+    "id": 242,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "Explain different Kubernetes deployment strategies and their use cases."
+  },
+  {
+    "id": 243,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "How do you approach infrastructure monitoring and alerting?"
+  },
+  {
+    "id": 244,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "What is GitOps and how does it relate to DevOps practices?"
+  },
+  {
+    "id": 245,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "Describe your approach to container orchestration and management."
+  },
+  {
+    "id": 246,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "How do you handle secrets management in a cloud environment?"
+  },
+  {
+    "id": 247,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "Explain your approach to implementing infrastructure as code."
+  },
+  {
+    "id": 248,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "How do you approach database migrations and schema changes in a CI/CD pipeline?"
+  },
+  {
+    "id": 249,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "What is service discovery and why is it important in microservices?"
+  },
+  {
+    "id": 250,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "How do you approach network security in a cloud environment?"
+  },
+  {
+    "id": 251,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "What is a canary deployment and how does it work?"
+  },
+  {
+    "id": 252,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "Explain your approach to implementing auto-scaling for applications."
+  },
+  {
+    "id": 253,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "How do you handle logging and log aggregation in a distributed system?"
+  },
+  {
+    "id": 254,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "Describe your experience with different cloud providers and their services."
+  },
+  {
+    "id": 255,
+    "profession": "DevOps Engineer",
+    "grade": "Middle",
+    "question_text": "How do you approach disaster recovery planning for critical applications?"
+  },
+  {
+    "id": 256,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How would you design and implement a multi-region, highly available infrastructure for a critical application?"
+  },
+  {
+    "id": 257,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to building a comprehensive security strategy for cloud-native applications."
+  },
+  {
+    "id": 258,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How would you design a scalable monitoring and observability platform for a large organization?"
+  },
+  {
+    "id": 259,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "Explain your strategy for managing infrastructure costs while ensuring performance and reliability."
+  },
+  {
+    "id": 260,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How would you approach building and maintaining a platform for multiple development teams?"
+  },
+  {
+    "id": 261,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "Discuss your experience with implementing and managing service meshes in a microservices architecture."
+  },
+  {
+    "id": 262,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How do you approach building a DevOps culture within an organization?"
+  },
+  {
+    "id": 263,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "Explain your approach to implementing zero-trust security in a cloud environment."
+  },
+  {
+    "id": 264,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How would you design and implement a global content delivery strategy for a web application?"
+  },
+  {
+    "id": 265,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "Discuss your experience with migrating legacy applications to cloud-native architectures."
+  },
+  {
+    "id": 266,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How would you approach implementing chaos engineering practices in a production environment?"
+  },
+  {
+    "id": 267,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "Explain your strategy for managing and rotating secrets in a complex, multi-environment deployment."
+  },
+  {
+    "id": 268,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How do you approach performance optimization for distributed systems?"
+  },
+  {
+    "id": 269,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "Discuss your experience with implementing policy as code and compliance automation."
+  },
+  {
+    "id": 270,
+    "profession": "DevOps Engineer",
+    "grade": "Senior",
+    "question_text": "How would you design an automated disaster recovery system with minimal data loss and downtime?"
+  },
+  {
+    "id": 271,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is the difference between UX and UI design?"
+  },
+  {
+    "id": 272,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is user-centered design and why is it important?"
+  },
+  {
+    "id": 273,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is a user persona and why is it useful in the design process?"
+  },
+  {
+    "id": 274,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of usability and why it's important."
+  },
+  {
+    "id": 275,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is a user journey map and how is it used in UX design?"
+  },
+  {
+    "id": 276,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of wireframing in the design process?"
+  },
+  {
+    "id": 277,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What are design principles and why are they important?"
+  },
+  {
+    "id": 278,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of responsive design."
+  },
+  {
+    "id": 279,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of user testing in UX design?"
+  },
+  {
+    "id": 280,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is a design system and why is it useful?"
+  },
+  {
+    "id": 281,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of user research in UX design?"
+  },
+  {
+    "id": 282,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is accessibility in UI design and why is it important?"
+  },
+  {
+    "id": 283,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is the difference between low-fidelity and high-fidelity prototyping?"
+  },
+  {
+    "id": 284,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "What is visual hierarchy and why is it important in UI design?"
+  },
+  {
+    "id": 285,
+    "profession": "UX/UI Designer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of affordance in UI design."
+  },
+  {
+    "id": 286,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you balance user needs with business goals in your design process?"
+  },
+  {
+    "id": 287,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "Describe your approach to solving design problems with multiple stakeholders."
+  },
+  {
+    "id": 288,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you incorporate user feedback and testing results into your design iterations?"
+  },
+  {
+    "id": 289,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "What methods do you use to validate your design decisions?"
+  },
+  {
+    "id": 290,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you approach designing for different platforms and devices?"
+  },
+  {
+    "id": 291,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "Explain your approach to creating and implementing design systems."
+  },
+  {
+    "id": 292,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you collaborate with developers to ensure design implementation meets expectations?"
+  },
+  {
+    "id": 293,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you approach designing for accessibility and inclusion?"
+  },
+  {
+    "id": 294,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "What is your approach to information architecture and content organization?"
+  },
+  {
+    "id": 295,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you measure the success of your designs?"
+  },
+  {
+    "id": 296,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "Describe your approach to micro-interactions and animation in UI design."
+  },
+  {
+    "id": 297,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you handle conflicting feedback from users or stakeholders?"
+  },
+  {
+    "id": 298,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "What is your approach to designing for different user segments or personas?"
+  },
+  {
+    "id": 299,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you stay current with design trends and technologies?"
+  },
+  {
+    "id": 300,
+    "profession": "UX/UI Designer",
+    "grade": "Middle",
+    "question_text": "How do you approach designing complex systems or processes?"
+  },
+  {
+    "id": 301,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How would you lead the UX/UI strategy for a major product redesign or new product launch?"
+  },
+  {
+    "id": 302,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to building and managing design teams and processes."
+  },
+  {
+    "id": 303,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How do you align design vision with business strategy and product roadmaps?"
+  },
+  {
+    "id": 304,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How would you approach scaling design processes and systems in a rapidly growing company?"
+  },
+  {
+    "id": 305,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "Describe how you would implement a research program to continually inform product design."
+  },
+  {
+    "id": 306,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How do you balance innovation with consistency in design across multiple products or features?"
+  },
+  {
+    "id": 307,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to designing for complex data visualization and analysis tools."
+  },
+  {
+    "id": 308,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How would you approach designing for global audiences with different cultural expectations?"
+  },
+  {
+    "id": 309,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "Describe your experience with implementing design systems across large organizations."
+  },
+  {
+    "id": 310,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How do you advocate for and demonstrate the business value of good design?"
+  },
+  {
+    "id": 311,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How would you approach designing ethically and responsibly, particularly for addictive products or vulnerable users?"
+  },
+  {
+    "id": 312,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to building design-focused relationships with stakeholders across engineering, product, and business."
+  },
+  {
+    "id": 313,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How do you approach measuring and improving the ROI of design initiatives?"
+  },
+  {
+    "id": 314,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "Describe your experience with transforming product strategy through design thinking."
+  },
+  {
+    "id": 315,
+    "profession": "UX/UI Designer",
+    "grade": "Senior",
+    "question_text": "How would you approach designing for emerging technologies or platforms?"
+  },
+  {
+    "id": 316,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between native, hybrid, and web mobile applications?"
+  },
+  {
+    "id": 317,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is the mobile app development lifecycle?"
+  },
+  {
+    "id": 318,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is responsive design in mobile development?"
+  },
+  {
+    "id": 319,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What are the main components of a mobile application?"
+  },
+  {
+    "id": 320,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of a mobile app manifest file?"
+  },
+  {
+    "id": 321,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What are permissions in mobile apps and why are they important?"
+  },
+  {
+    "id": 322,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of app state management."
+  },
+  {
+    "id": 323,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of a mobile app store and what are the submission processes?"
+  },
+  {
+    "id": 324,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is the difference between a mobile app and a progressive web app (PWA)?"
+  },
+  {
+    "id": 325,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What are the key considerations for mobile app UI design?"
+  },
+  {
+    "id": 326,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is a mobile app testing framework and can you name some?"
+  },
+  {
+    "id": 327,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is the purpose of a mobile app cache?"
+  },
+  {
+    "id": 328,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "Explain the concept of offline capabilities in mobile apps."
+  },
+  {
+    "id": 329,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What are push notifications and how do they work?"
+  },
+  {
+    "id": 330,
+    "profession": "Mobile Developer",
+    "grade": "Junior",
+    "question_text": "What is version control and why is it important in mobile development?"
+  },
+  {
+    "id": 331,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "How do you approach performance optimization for mobile applications?"
+  },
+  {
+    "id": 332,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "Explain your approach to handling device fragmentation in mobile development."
+  },
+  {
+    "id": 333,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "How do you implement secure data storage and communication in mobile apps?"
+  },
+  {
+    "id": 334,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "What is your approach to state management in complex mobile applications?"
+  },
+  {
+    "id": 335,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "How do you handle responsive layouts for different screen sizes and orientations?"
+  },
+  {
+    "id": 336,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "Describe your approach to implementing offline capabilities and data synchronization."
+  },
+  {
+    "id": 337,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "How do you approach testing on multiple devices and platforms?"
+  },
+  {
+    "id": 338,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "What is your experience with implementing and optimizing mobile app animations?"
+  },
+  {
+    "id": 339,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "How do you handle API integration and network requests in mobile apps?"
+  },
+  {
+    "id": 340,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "What is your approach to implementing authentication and authorization in mobile apps?"
+  },
+  {
+    "id": 341,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "How do you handle memory management and potential leaks in mobile applications?"
+  },
+  {
+    "id": 342,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "Describe your experience with implementing and managing push notifications."
+  },
+  {
+    "id": 343,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "What is your approach to implementing localization and internationalization in mobile apps?"
+  },
+  {
+    "id": 344,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "How do you approach continuous integration and delivery for mobile applications?"
+  },
+  {
+    "id": 345,
+    "profession": "Mobile Developer",
+    "grade": "Middle",
+    "question_text": "What strategies do you use to reduce app size and optimize download times?"
+  },
+  {
+    "id": 346,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How would you architect a scalable and maintainable mobile application for a complex domain?"
+  },
+  {
+    "id": 347,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to building and leading mobile development teams and processes."
+  },
+  {
+    "id": 348,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How do you approach architectural patterns and clean code principles in mobile development?"
+  },
+  {
+    "id": 349,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How would you implement a comprehensive testing strategy for mobile applications?"
+  },
+  {
+    "id": 350,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "Discuss your experience with performance optimization and monitoring for mobile apps at scale."
+  },
+  {
+    "id": 351,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How would you approach building a cross-platform strategy that balances developer efficiency with native performance?"
+  },
+  {
+    "id": 352,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How do you stay current with rapidly evolving mobile platforms and best practices?"
+  },
+  {
+    "id": 353,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to security and privacy considerations in mobile application development."
+  },
+  {
+    "id": 354,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How would you design and implement a robust offline-first mobile application?"
+  },
+  {
+    "id": 355,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "What is your approach to handling legacy code and technical debt in mobile applications?"
+  },
+  {
+    "id": 356,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How would you implement a comprehensive analytics and monitoring strategy for mobile applications?"
+  },
+  {
+    "id": 357,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "Discuss your approach to building accessible mobile applications."
+  },
+  {
+    "id": 358,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How would you design mobile applications that integrate with complex backend systems or IoT devices?"
+  },
+  {
+    "id": 359,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "Describe your experience with implementing complex animations and interactions while maintaining performance."
+  },
+  {
+    "id": 360,
+    "profession": "Mobile Developer",
+    "grade": "Senior",
+    "question_text": "How do you approach designing and implementing mobile applications that need to work in challenging network environments?"
+  }
+]

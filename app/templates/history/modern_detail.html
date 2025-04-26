@@ -1,0 +1,211 @@
+{% extends "modern_layout.html" %}
+
+{% block title %}Interview Details{% endblock %}
+
+{% block authenticated_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold mb-1">Interview Results</h1>
+        <p class="text-muted">{{ interview.profession }} - {{ interview.grade }}</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="{{ url_for('history.index') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Back to History
+        </a>
+        <a href="{{ url_for('catalog.index') }}" 
+           class="btn btn-primary" onclick="return confirm('Are you sure you want to start a new interview?');">
+            <i class="fas fa-redo me-2"></i> Take Again
+        </a>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm mb-5">
+    <div class="card-body p-4">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                {% if interview.overall_rating is not none %}
+                    {% if interview.overall_rating >= 4.0 %}
+                        <div class="rating-icon rating-excellent">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="fw-bold mt-3">Excellent Job!</h3>
+                    {% elif interview.overall_rating >= 3.0 %}
+                        <div class="rating-icon rating-good">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3 class="fw-bold mt-3">Good Performance</h3>
+                    {% elif interview.overall_rating >= 2.0 %}
+                        <div class="rating-icon rating-average">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="fw-bold mt-3">Decent Effort</h3>
+                    {% else %}
+                        <div class="rating-icon rating-poor">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="fw-bold mt-3">Needs Practice</h3>
+                    {% endif %}
+                {% else %}
+                    <div class="rating-icon rating-unknown">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="fw-bold mt-3">Interview Completed</h3>
+                {% endif %}
+                
+                {% if interview.overall_rating is not none %}
+                    <div class="rating mt-3">
+                        <div class="stars">
+                            {% for i in range(5) %}
+                                {% if i < interview.overall_rating|int %}
+                                    <i class="fas fa-star"></i>
+                                {% elif i == interview.overall_rating|int and interview.overall_rating % 1 >= 0.5 %}
+                                    <i class="fas fa-star-half-alt"></i>
+                                {% else %}
+                                    <i class="far fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="fw-bold fs-4 mt-2">{{ interview.overall_rating }} / 5.0</div>
+                    </div>
+                {% else %}
+                    <div class="mt-3 text-muted">
+                        <p>No rating available</p>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-lg-8">
+                <h4 class="fw-bold mb-3">Interview Summary</h4>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="far fa-calendar-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Date</div>
+                                <div class="info-value">{{ interview.created_at.strftime('%B %d, %Y') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="far fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Time</div>
+                                <div class="info-value">{{ interview.created_at.strftime('%H:%M') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Questions</div>
+                                <div class="info-value">{{ interview.answers|length }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Duration</div>
+                                <div class="info-value">
+                                    {% set duration = interview.completed_at - interview.created_at %}
+                                    {% set minutes = (duration.total_seconds() / 60)|int %}
+                                    {% set seconds = (duration.total_seconds() % 60)|int %}
+                                    {{ minutes }} min {{ seconds }} sec
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="fw-bold mb-3">Performance Breakdown</h5>
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-3">Question</th>
+                                <th style="width: 120px;" class="text-center">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for answer in interview.answers %}
+                                <tr>
+                                    <td class="ps-3">
+                                        <div class="question-text">{{ answer.question_text|truncate(50) }}</div>
+                                    </td>
+                                    <td class="text-center">
+                                        {% if answer.rating is not none %}
+                                            <div class="rating-badge 
+                                                {% if answer.rating >= 4.0 %}rating-excellent
+                                                {% elif answer.rating >= 3.0 %}rating-good
+                                                {% elif answer.rating >= 2.0 %}rating-average
+                                                {% else %}rating-poor{% endif %}">
+                                                {{ answer.rating }}
+                                            </div>
+                                        {% else %}
+                                            <span class="text-muted">N/A</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="fw-bold mb-4">Detailed Feedback</h2>
+
+<div class="accordion" id="feedbackAccordion">
+    {% for answer in interview.answers %}
+        <div class="accordion-item mb-3 shadow-sm border-0 rounded">
+            <h2 class="accordion-header" id="heading{{ loop.index }}">
+                <button class="accordion-button rounded {% if not loop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ loop.index }}">
+                    <div class="d-flex align-items-center w-100">
+                        <span class="fw-bold me-2">Q{{ loop.index }}:</span>
+                        <span class="flex-grow-1">{{ answer.question_text|truncate(80) }}</span>
+                        {% if answer.rating is not none %}
+                            <span class="ms-2 rating-badge 
+                                {% if answer.rating >= 4.0 %}rating-excellent
+                                {% elif answer.rating >= 3.0 %}rating-good
+                                {% elif answer.rating >= 2.0 %}rating-average
+                                {% else %}rating-poor{% endif %}">
+                                {{ answer.rating }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </button>
+            </h2>
+            <div id="collapse{{ loop.index }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#feedbackAccordion">
+                <div class="accordion-body">
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Your Answer:</h5>
+                        <div class="p-3 bg-light rounded">
+                            {{ answer.transcribed_text }}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="fw-bold mb-3">AI Feedback:</h5>
+                        <div class="feedback-content">
+                            {{ answer.feedback|safe|nl2br }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

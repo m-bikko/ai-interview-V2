@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | AI Interview</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link id="main-css" rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    
+    <!-- UI Scripts -->
+    <script src="{{ url_for('static', filename='js/redirect-to-modern.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui-switcher.js') }}" defer></script>
+</head>
+<body>
+    <!-- Guest User View -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                <span class="fw-bold text-primary">AI</span> Interview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white px-4" href="{{ url_for('auth.register') }}">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <!-- Main Content -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="slide-up">Practice Interviews with AI Feedback</h1>
+                    <p class="lead slide-up" style="animation-delay: 0.1s;">Prepare for technical interviews in IT roles with tailored questions, instant AI-driven feedback, and personalized CV reviews.</p>
+                    <div class="d-flex gap-3 mt-4 slide-up" style="animation-delay: 0.2s;">
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg px-4">Get Started</a>
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light btn-lg px-4">Login</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="{{ url_for('static', filename='img/hero-image.svg') }}" alt="AI Interview" class="img-fluid slide-up" style="animation-delay: 0.3s;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Why Choose AI Interview?</h2>
+            <p class="lead text-muted">Designed specifically for IT professionals to improve technical interview skills</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card fade-in" style="animation-delay: 0.1s;">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Practice Realistic Interviews</h3>
+                        <p class="text-muted">Choose from 8 different IT professions and 3 seniority levels with tailored questions for each.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card fade-in" style="animation-delay: 0.2s;">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI-Powered Feedback</h3>
+                        <p class="text-muted">Get instant, detailed feedback on your answers powered by Google's Gemini AI.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card fade-in" style="animation-delay: 0.3s;">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>CV Analysis & Review</h3>
+                        <p class="text-muted">Upload your CV for comprehensive AI analysis highlighting strengths and areas for improvement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5 pt-5">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-4">Improve Your Interview Skills</h2>
+                <p class="lead">Our platform covers all major IT roles:</p>
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                    <span class="badge bg-primary p-2">Backend Development</span>
+                    <span class="badge bg-primary p-2">Frontend Development</span>
+                    <span class="badge bg-primary p-2">Full Stack Development</span>
+                    <span class="badge bg-primary p-2">Data Science</span>
+                    <span class="badge bg-primary p-2">Product Management</span>
+                    <span class="badge bg-primary p-2">DevOps</span>
+                    <span class="badge bg-primary p-2">UX/UI Design</span>
+                    <span class="badge bg-primary p-2">Mobile Development</span>
+                </div>
+                <p>Each role includes tailored questions for Junior, Middle, and Senior levels to match your career stage.</p>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg mt-3">Start Practicing Now</a>
+            </div>
+            <div class="col-md-6">
+                <div class="card mt-4 mt-md-0">
+                    <div class="card-body">
+                        <div class="ratio ratio-16x9">
+                            <img src="{{ url_for('static', filename='img/dashboard-preview.png') }}" alt="Platform Preview" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row align-items-center mt-5 pt-5">
+            <div class="col-md-6 order-md-2">
+                <h2 class="fw-bold mb-4">How It Works</h2>
+                <div class="d-flex mb-4">
+                    <div class="me-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">1</div>
+                    </div>
+                    <div>
+                        <h4>Select Your Role & Level</h4>
+                        <p class="text-muted">Choose from 8 different IT professions and specify your experience level.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-4">
+                    <div class="me-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">2</div>
+                    </div>
+                    <div>
+                        <h4>Record Your Answers</h4>
+                        <p class="text-muted">Respond to technical interview questions by recording your answers directly in your browser.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-4">
+                    <div class="me-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">3</div>
+                    </div>
+                    <div>
+                        <h4>Get AI Feedback</h4>
+                        <p class="text-muted">Receive detailed AI-generated feedback on your answers' technical accuracy, relevance, and clarity.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <img src="{{ url_for('static', filename='img/how-it-works.svg') }}" alt="How It Works" class="img-fluid">
+            </div>
+        </div>
+        
+        <div class="text-center mt-5 pt-5 mb-5">
+            <h2 class="fw-bold mb-4">Ready to Ace Your Next Interview?</h2>
+            <p class="lead text-muted mb-4">Join thousands of IT professionals who have improved their interview skills with our platform.</p>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg px-5 py-3">Get Started for Free</a>
+        </div>
+    </div>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

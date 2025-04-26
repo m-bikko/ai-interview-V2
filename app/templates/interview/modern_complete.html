@@ -1,0 +1,219 @@
+{% extends "modern_layout.html" %}
+
+{% block title %}Interview Results{% endblock %}
+
+{% block authenticated_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold mb-1">Interview Results</h1>
+        <p class="text-muted">{{ interview.profession }} - {{ interview.grade }}</p>
+    </div>
+    <div>
+        <a href="{{ url_for('history.index') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-history me-2"></i> View History
+        </a>
+    </div>
+</div>
+
+<!-- Results Card -->
+<div class="card border-0 shadow-sm mb-5">
+    <div class="card-body p-0">
+        <div class="row g-0">
+            <!-- Result Overview -->
+            <div class="col-lg-4 p-4 text-center" style="background-color: var(--primary); color: var(--text-on-primary); border-radius: var(--border-radius) 0 0 var(--border-radius);">
+                {% if interview.overall_rating is not none %}
+                    {% if interview.overall_rating >= 4.0 %}
+                        <div class="mb-3">
+                            <i class="fas fa-trophy" style="font-size: 4rem;"></i>
+                        </div>
+                        <h2 class="fw-bold mb-2">Excellent Job!</h2>
+                        <p class="mb-4">You've demonstrated exceptional skills in this interview</p>
+                    {% elif interview.overall_rating >= 3.0 %}
+                        <div class="mb-3">
+                            <i class="fas fa-medal" style="font-size: 4rem;"></i>
+                        </div>
+                        <h2 class="fw-bold mb-2">Good Performance</h2>
+                        <p class="mb-4">You showed solid knowledge and communication skills</p>
+                    {% elif interview.overall_rating >= 2.0 %}
+                        <div class="mb-3">
+                            <i class="fas fa-chart-line" style="font-size: 4rem;"></i>
+                        </div>
+                        <h2 class="fw-bold mb-2">Decent Effort</h2>
+                        <p class="mb-4">You're on the right path, but some areas need improvement</p>
+                    {% else %}
+                        <div class="mb-3">
+                            <i class="fas fa-book-open" style="font-size: 4rem;"></i>
+                        </div>
+                        <h2 class="fw-bold mb-2">Needs Practice</h2>
+                        <p class="mb-4">More preparation would help improve your performance</p>
+                    {% endif %}
+                    
+                    <div class="rating-stars mb-2" style="font-size: 1.5rem;">
+                        {% for i in range(5) %}
+                            {% if i < interview.overall_rating|int %}
+                                <i class="fas fa-star"></i>
+                            {% elif i == interview.overall_rating|int and interview.overall_rating % 1 >= 0.5 %}
+                                <i class="fas fa-star-half-alt"></i>
+                            {% else %}
+                                <i class="far fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="fw-bold mb-0">{{ interview.overall_rating }} / 5.0</h3>
+                {% else %}
+                    <div class="mb-3">
+                        <i class="fas fa-clipboard-check" style="font-size: 4rem;"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2">Interview Completed</h2>
+                    <p>You've completed this interview session</p>
+                {% endif %}
+            </div>
+            
+            <!-- Performance Breakdown -->
+            <div class="col-lg-8 p-4">
+                <h3 class="fw-semibold mb-3">Interview Summary</h3>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-calendar-alt text-primary me-2"></i>
+                            <span class="fw-medium">{{ interview.created_at.strftime('%B %d, %Y at %H:%M') }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-question-circle text-primary me-2"></i>
+                            <span class="fw-medium">{{ interview.answers|length }} Questions Answered</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 class="fw-semibold mb-3">Performance Breakdown</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 70%;">Question</th>
+                                <th style="width: 30%;">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for answer in interview.answers %}
+                                <tr>
+                                    <td>{{ answer.question_text|truncate(50) }}</td>
+                                    <td>
+                                        {% if answer.rating is not none %}
+                                            <div class="d-flex align-items-center">
+                                                <div class="rating-stars me-2">
+                                                    {% for i in range(5) %}
+                                                        {% if i < answer.rating|int %}
+                                                            <i class="fas fa-star"></i>
+                                                        {% elif i == answer.rating|int and answer.rating % 1 >= 0.5 %}
+                                                            <i class="fas fa-star-half-alt"></i>
+                                                        {% else %}
+                                                            <i class="far fa-star"></i>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                                <span class="fw-semibold">{{ answer.rating }}</span>
+                                            </div>
+                                        {% else %}
+                                            <span class="text-muted">Not rated</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-footer bg-light p-4">
+        <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <a href="{{ url_for('catalog.index') }}" class="btn btn-primary w-100">
+                    <i class="fas fa-redo me-2"></i> Try Another Interview
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{ url_for('catalog.index') }}" class="btn btn-outline-primary w-100">
+                    <i class="fas fa-th-large me-2"></i> Back to Catalog
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed Feedback Section -->
+<h2 class="fw-bold mb-4">Detailed Feedback</h2>
+
+<div class="accordion" id="feedbackAccordion">
+    {% for answer in interview.answers %}
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-header bg-white p-0">
+                <button class="accordion-button {% if not loop.first %}collapsed{% endif %} p-4" type="button" 
+                        data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" 
+                        aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" 
+                        aria-controls="collapse{{ loop.index }}">
+                    <div class="d-flex align-items-center w-100">
+                        <div class="question-number-badge me-3">{{ loop.index }}</div>
+                        <div class="flex-grow-1">
+                            <h5 class="mb-0 fw-semibold">{{ answer.question_text|truncate(80) }}</h5>
+                        </div>
+                        {% if answer.rating is not none %}
+                            <div class="ms-3">
+                                <span class="badge 
+                                    {% if answer.rating >= 4.0 %}badge-success
+                                    {% elif answer.rating >= 3.0 %}badge-info
+                                    {% elif answer.rating >= 2.0 %}badge-warning
+                                    {% else %}badge-danger{% endif %} fw-medium py-2 px-3">
+                                    {{ answer.rating }}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </button>
+            </div>
+            <div id="collapse{{ loop.index }}" class="collapse {% if loop.first %}show{% endif %}" 
+                 aria-labelledby="heading{{ loop.index }}" data-bs-parent="#feedbackAccordion">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <h5 class="fw-semibold mb-3">
+                                <i class="fas fa-microphone text-primary me-2"></i> Your Answer
+                            </h5>
+                            <p class="mb-4">{{ answer.transcribed_text }}</p>
+                            
+                            {% if answer.audio_path %}
+                                <div class="audio-player bg-light rounded p-3">
+                                    <p class="text-sm text-muted mb-2">Listen to your recording:</p>
+                                    <audio controls class="w-100">
+                                        <source src="{{ url_for('static', filename=answer.audio_path) }}" type="audio/webm">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-7">
+                            <h5 class="fw-semibold mb-3">
+                                <i class="fas fa-robot text-primary me-2"></i> AI Feedback
+                            </h5>
+                            <div class="p-4 bg-light rounded">
+                                {{ answer.feedback|safe|nl2br }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="text-center mt-5">
+    <a href="{{ url_for('catalog.index') }}" class="btn btn-primary btn-lg px-5">
+        <i class="fas fa-home me-2"></i> Return to Catalog
+    </a>
+</div>
+{% endblock %}

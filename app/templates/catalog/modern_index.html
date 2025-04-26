@@ -1,0 +1,131 @@
+{% extends "modern_layout.html" %}
+
+{% block title %}Interview Catalog{% endblock %}
+
+{% block authenticated_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold mb-1">Interview Catalog</h1>
+        <p class="text-muted">Select a profession and grade level to start practicing technical interviews.</p>
+    </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body p-4">
+        <h5 class="fw-semibold mb-3">Filter Options</h5>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="profession-filter" class="form-label">Profession</label>
+                    <select id="profession-filter" class="form-select">
+                        <option value="">All Professions</option>
+                        {% for profession in professions %}
+                            <option value="{{ profession.id }}">{{ profession.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="grade-filter" class="form-label">Grade Level</label>
+                    <select id="grade-filter" class="form-select">
+                        <option value="">All Grades</option>
+                        {% for grade in grades %}
+                            <option value="{{ grade }}">{{ grade }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="search" class="form-label">Search</label>
+                    <input type="text" id="search" class="form-control" placeholder="Search professions...">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex mt-3">
+            <button id="apply-filters" class="btn btn-primary">
+                <i class="fas fa-filter me-2"></i> Apply Filters
+            </button>
+            <button id="reset-filters" class="btn btn-outline-secondary ms-2">
+                <i class="fas fa-undo me-2"></i> Reset
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="catalog-results">
+    <div class="row g-4">
+        {% for profession in professions %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card card-hover h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-3">{{ profession.name }}</h4>
+                        <p class="text-muted mb-3">Select a grade level to start an interview:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            {% for grade in grades %}
+                                {% if question_counts[profession.id][grade] > 0 %}
+                                    {% if grade.lower() == 'junior' %}
+                                        {% set badge_class = 'badge-primary' %}
+                                    {% elif grade.lower() == 'middle' %}
+                                        {% set badge_class = 'badge-secondary' %}
+                                    {% else %}
+                                        {% set badge_class = 'badge-info' %}
+                                    {% endif %}
+                                    <a href="{{ url_for('catalog.profession_detail', profession_id=profession.id, grade=grade) }}" class="badge rounded-pill {{ badge_class }}">
+                                        {{ grade }} ({{ question_counts[profession.id][grade] }})
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white p-3 border-0">
+                        {% set default_grade = 'Junior' %}
+                        <a href="{{ url_for('catalog.profession_detail', profession_id=profession.id, grade=default_grade) }}" class="btn btn-sm btn-outline-primary d-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const professionFilter = document.getElementById('profession-filter');
+        const gradeFilter = document.getElementById('grade-filter');
+        const searchInput = document.getElementById('search');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
+        const catalogResults = document.getElementById('catalog-results');
+        
+        // Apply filters
+        applyFiltersBtn.addEventListener('click', function() {
+            const profession = professionFilter.value;
+            const grade = gradeFilter.value;
+            const search = searchInput.value;
+            
+            // Make AJAX request to get filtered results
+            fetch(`{{ url_for('catalog.filter_catalog') }}?profession_id=${profession}&grade=${grade}&search=${search}`)
+                .then(response => response.text())
+                .then(html => {
+                    catalogResults.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error fetching filtered results:', error);
+                });
+        });
+        
+        // Reset filters
+        resetFiltersBtn.addEventListener('click', function() {
+            professionFilter.value = '';
+            gradeFilter.value = '';
+            searchInput.value = '';
+            
+            // Trigger filter to show all results
+            applyFiltersBtn.click();
+        });
+    });
+</script>
+{% endblock %}

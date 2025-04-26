@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | AI Interview</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern.css') }}">
+</head>
+<body>
+    <!-- Public Navigation -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                <span>AI</span> Interview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="{{ url_for('auth.register') }}">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <!-- Register Form -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="card shadow border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="text-center mb-4">
+                            <h1 class="h3 mb-3 fw-bold">Create Your Account</h1>
+                            <p class="text-muted">Join AI Interview and start practicing</p>
+                        </div>
+                        
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            
+                            <div class="form-group mb-4">
+                                <label for="full_name" class="form-label">Full Name</label>
+                                {{ form.full_name(class="form-control", placeholder="John Doe", id="full_name") }}
+                                {% if form.full_name.errors %}
+                                    <div class="invalid-feedback d-block mt-1 text-danger">
+                                        {% for error in form.full_name.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group mb-4">
+                                <label for="email" class="form-label">Email Address</label>
+                                {{ form.email(class="form-control", placeholder="you@example.com", id="email") }}
+                                {% if form.email.errors %}
+                                    <div class="invalid-feedback d-block mt-1 text-danger">
+                                        {% for error in form.email.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group mb-4">
+                                <label for="password" class="form-label">Password</label>
+                                {{ form.password(class="form-control", placeholder="Create a password", id="password") }}
+                                <div class="form-hint mt-1">
+                                    <i class="fas fa-info-circle text-info me-1"></i> Password must be at least 8 characters
+                                </div>
+                                {% if form.password.errors %}
+                                    <div class="invalid-feedback d-block mt-1 text-danger">
+                                        {% for error in form.password.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group mb-4">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                {{ form.confirm_password(class="form-control", placeholder="Confirm your password", id="confirm_password") }}
+                                {% if form.confirm_password.errors %}
+                                    <div class="invalid-feedback d-block mt-1 text-danger">
+                                        {% for error in form.confirm_password.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="d-grid mb-4">
+                                {{ form.submit(class="btn btn-primary btn-lg") }}
+                            </div>
+                        </form>
+                        
+                        <div class="text-center">
+                            <p class="mb-0">Already have an account? <a href="{{ url_for('auth.login') }}" class="text-primary fw-semibold">Sign in</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 text-center">
+                    <p class="text-muted">
+                        <small>© {{ year }} AI Interview Platform. All rights reserved.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <!-- UI Switcher -->
+    <script>
+        // Check if we need to set the UI preference cookie
+        document.addEventListener('DOMContentLoaded', function() {
+            document.cookie = "ai_interview_ui=modern; path=/; max-age=" + (30*24*60*60); // 30 days
+        });
+    </script>
+</body>
+</html>

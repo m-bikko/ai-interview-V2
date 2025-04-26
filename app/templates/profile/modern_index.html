@@ -1,0 +1,162 @@
+{% extends "modern_layout.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block authenticated_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold mb-1">My Profile</h1>
+        <p class="text-muted">Manage your profile information and CV</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4 text-center">
+                <div class="avatar avatar-xl mx-auto mb-3">
+                    {% if current_user.profile_picture %}
+                        <img src="{{ url_for('profile.profile_picture', filename=current_user.profile_picture) }}" alt="Profile Picture">
+                    {% else %}
+                        {{ current_user.full_name[0] | upper }}
+                    {% endif %}
+                </div>
+                <h4 class="fw-bold mb-1">{{ current_user.full_name }}</h4>
+                <p class="text-muted mb-3">{{ current_user.email }}</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                    <i class="fas fa-edit me-2"></i> Edit Profile
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3">Primary CV</h4>
+                
+                {% if current_user.actual_cv %}
+                    <div class="d-flex align-items-center p-3 bg-light rounded mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-file-pdf fs-2 text-primary"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            {% set cv_record = cvs|selectattr('file_path', 'equalto', current_user.actual_cv)|first %}
+                            <div class="fw-semibold">{{ cv_record.filename if cv_record else 'Your CV' }}</div>
+                            <div class="text-muted small">{{ cv_record.uploaded_at.strftime('%B %d, %Y at %H:%M') if cv_record else '' }}</div>
+                        </div>
+                        <div>
+                            <a href="{{ url_for('profile.download_cv') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-download me-1"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info d-flex align-items-center mb-3">
+                        <i class="fas fa-info-circle me-3 fa-lg"></i>
+                        <div>
+                            <strong>No primary CV set.</strong> Upload a CV in the CV Management section and set it as your primary CV.
+                        </div>
+                    </div>
+                    <a href="{{ url_for('cv.index') }}" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i> Upload CV
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Stats Section -->
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <h4 class="fw-bold mb-3">Activity Summary</h4>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-primary-soft">
+                        <i class="fas fa-microphone-alt text-primary"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">{{ interview_count }}</div>
+                        <div class="stat-label">Interviews</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-success-soft">
+                        <i class="fas fa-check-circle text-success"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">{{ completed_interview_count }}</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-info-soft">
+                        <i class="fas fa-file-alt text-info"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">{{ cv_count }}</div>
+                        <div class="stat-label">CVs Uploaded</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('profile.update') }}" method="POST" enctype="multipart/form-data">
+                    <div class="mb-4 text-center">
+                        <div class="avatar avatar-xl mx-auto mb-3">
+                            {% if current_user.profile_picture %}
+                                <img src="{{ url_for('profile.profile_picture', filename=current_user.profile_picture) }}" alt="Profile Picture">
+                            {% else %}
+                                {{ current_user.full_name[0] | upper }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="profile_picture" class="form-label">Change Profile Picture</label>
+                            <input class="form-control" type="file" id="profile_picture" name="profile_picture" accept="image/*">
+                            <div class="form-text">Upload a square image for best results.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="full_name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="full_name" name="full_name" value="{{ current_user.full_name }}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" value="{{ current_user.email }}" disabled>
+                        <div class="form-text">Email cannot be changed.</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="actual_cv" class="form-label">Primary CV</label>
+                        <input class="form-control" type="file" id="actual_cv" name="actual_cv" accept=".pdf">
+                        <div class="form-text">Upload a new CV or select one from your existing CVs in the CV Management section.</div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

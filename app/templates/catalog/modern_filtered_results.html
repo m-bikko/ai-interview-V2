@@ -1,0 +1,41 @@
+<div class="row g-4">
+    {% for profession in professions %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card card-hover h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-3">{{ profession.name }}</h4>
+                    <p class="text-muted mb-3">Select a grade level to start an interview:</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for grade in grades %}
+                            {% if question_counts[profession.id][grade] > 0 %}
+                                {% if grade.lower() == 'junior' %}
+                                    {% set badge_class = 'badge-primary' %}
+                                {% elif grade.lower() == 'middle' %}
+                                    {% set badge_class = 'badge-secondary' %}
+                                {% else %}
+                                    {% set badge_class = 'badge-info' %}
+                                {% endif %}
+                                <a href="{{ url_for('catalog.profession_detail', profession_id=profession.id, grade=grade) }}" class="badge rounded-pill {{ badge_class }}">
+                                    {{ grade }} ({{ question_counts[profession.id][grade] }})
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-footer bg-white p-3 border-0">
+                    {% set default_grade = 'Junior' %}
+                    <a href="{{ url_for('catalog.profession_detail', profession_id=profession.id, grade=default_grade) }}" class="btn btn-sm btn-outline-primary d-block">View Details</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info d-flex align-items-center">
+                <i class="fas fa-info-circle me-3 fa-lg"></i>
+                <div>
+                    <strong>No results found.</strong> Please try different filters or search terms.
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

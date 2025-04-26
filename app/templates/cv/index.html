@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Management | AI Interview</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container">
+            <a class="navbar-brand text-white" href="{{ url_for('main.index') }}">
+                <span class="fw-bold">AI</span> Interview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('catalog.index') }}">Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('history.index') }}">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('cv.index') }}">CVs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('profile.index') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <!-- Main Content -->
+<div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="mb-0">CV Management</h1>
+            <p class="text-muted">Upload your CV for AI analysis or view previous reviews.</p>
+        </div>
+    </div>
+    
+    <div class="cv-management-tabs d-flex">
+        <div class="cv-tab {% if request.args.get('tab') != 'list' %}active{% endif %}" data-tab="upload" id="upload-tab">
+            <i class="fas fa-upload me-2"></i> Upload CV
+        </div>
+        <div class="cv-tab {% if request.args.get('tab') == 'list' %}active{% endif %}" data-tab="list" id="list-tab">
+            <i class="fas fa-list me-2"></i> My CVs
+        </div>
+    </div>
+    
+    <div class="tab-content">
+        <div class="tab-pane {% if request.args.get('tab') != 'list' %}active{% endif %}" id="upload-content">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-4">Upload New CV</h4>
+                    <p class="text-muted mb-4">Upload your CV in PDF format for AI analysis. Our system will analyze your CV and provide detailed feedback on its strengths, weaknesses, and areas for improvement.</p>
+                    
+                    <form action="{{ url_for('cv.upload') }}" method="POST" enctype="multipart/form-data" id="cv-upload-form">
+                        <div class="cv-upload-container" id="cv-upload-container">
+                            <input type="file" name="cv_file" id="cv-file-input" style="display: none;" accept=".pdf">
+                            <div class="cv-upload-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <h5>Drag & Drop your CV here</h5>
+                            <p class="text-muted">or click to browse</p>
+                            <p class="text-muted"><small>PDF format only, max 16MB</small></p>
+                        </div>
+                        
+                        <div id="file-selected" class="alert alert-success" style="display: none;">
+                            <i class="fas fa-check-circle me-2"></i> <span id="file-name">file.pdf</span> selected
+                            <button type="button" class="btn-close float-end" id="remove-file"></button>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg" id="upload-button" disabled>
+                                <i class="fas fa-upload me-2"></i> Upload and Analyze
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane {% if request.args.get('tab') == 'list' %}active{% endif %}" id="list-content">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-4">My CVs</h4>
+                    
+                    {% if cvs %}
+                        <div class="cv-list">
+                            {% for cv in cvs %}
+                                <div class="cv-list-item">
+                                    <div class="cv-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="cv-info">
+                                        <div class="cv-filename">{{ cv.filename }}</div>
+                                        <div class="cv-date">Uploaded on {{ cv.uploaded_at.strftime('%B %d, %Y at %H:%M') }}</div>
+                                    </div>
+                                    <div class="cv-actions">
+                                        <a href="{{ url_for('cv.view', cv_id=cv.id) }}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ url_for('cv.download', cv_id=cv.id) }}" class="btn btn-sm btn-secondary">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                        <form action="{{ url_for('cv.delete', cv_id=cv.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this CV?');">
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i> You haven't uploaded any CVs yet.
+                        </div>
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary btn-lg" id="go-to-upload">
+                                <i class="fas fa-upload me-2"></i> Upload Your First CV
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <!-- Page Specific Scripts -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const uploadTab = document.getElementById('upload-tab');
+        const listTab = document.getElementById('list-tab');
+        const uploadContent = document.getElementById('upload-content');
+        const listContent = document.getElementById('list-content');
+        const goToUploadBtn = document.getElementById('go-to-upload');
+        
+        const fileInput = document.getElementById('cv-file-input');
+        const uploadContainer = document.getElementById('cv-upload-container');
+        const fileSelected = document.getElementById('file-selected');
+        const fileName = document.getElementById('file-name');
+        const removeFileBtn = document.getElementById('remove-file');
+        const uploadButton = document.getElementById('upload-button');
+        
+        // Tab switching
+        uploadTab.addEventListener('click', function() {
+            uploadTab.classList.add('active');
+            listTab.classList.remove('active');
+            uploadContent.classList.add('active');
+            listContent.classList.remove('active');
+            
+            // Update URL without reloading
+            history.pushState({}, '', '{{ url_for("cv.index") }}');
+        });
+        
+        listTab.addEventListener('click', function() {
+            listTab.classList.add('active');
+            uploadTab.classList.remove('active');
+            listContent.classList.add('active');
+            uploadContent.classList.remove('active');
+            
+            // Update URL without reloading
+            history.pushState({}, '', '{{ url_for("cv.index", tab="list") }}');
+        });
+        
+        if (goToUploadBtn) {
+            goToUploadBtn.addEventListener('click', function() {
+                uploadTab.click();
+            });
+        }
+        
+        // File upload
+        uploadContainer.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        uploadContainer.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadContainer.classList.add('border-primary');
+        });
+        
+        uploadContainer.addEventListener('dragleave', function() {
+            uploadContainer.classList.remove('border-primary');
+        });
+        
+        uploadContainer.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadContainer.classList.remove('border-primary');
+            
+            if (e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+        
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length) {
+                handleFile(fileInput.files[0]);
+            }
+        });
+        
+        removeFileBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            fileInput.value = '';
+            fileSelected.style.display = 'none';
+            uploadButton.disabled = true;
+        });
+        
+        function handleFile(file) {
+            // Check if file is PDF
+            if (file.type !== 'application/pdf') {
+                alert('Only PDF files are allowed.');
+                return;
+            }
+            
+            // Show selected file
+            fileName.textContent = file.name;
+            fileSelected.style.display = 'block';
+            uploadButton.disabled = false;
+        }
+    });
+</script>
+</body>
+</html>

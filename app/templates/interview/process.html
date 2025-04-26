@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Process | AI Interview</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container">
+            <a class="navbar-brand text-white" href="{{ url_for('main.index') }}">
+                <span class="fw-bold">AI</span> Interview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('catalog.index') }}">Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('history.index') }}">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('cv.index') }}">CVs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('profile.index') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <h1 class="mb-0">{{ profession.name }} - {{ interview.grade }} Interview</h1>
+                <p class="text-muted">Answer each question by recording your response.</p>
+            </div>
+            <div>
+                <a href="{{ url_for('catalog.index') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-times"></i> Exit Interview
+                </a>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="mb-3">Progress</h4>
+                <div class="progress mb-3" style="height: 10px;">
+                    {% set completed = questions|selectattr('answer_status', 'equalto', 'completed')|list|length %}
+                    {% set percentage = (completed / questions|length) * 100 %}
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ percentage }}%;" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span>{{ completed }} of {{ questions|length }} questions completed</span>
+                    {% if percentage == 100 %}
+                        <a href="{{ url_for('interview.complete', interview_id=interview.id) }}" class="btn btn-success btn-sm">
+                            <i class="fas fa-check-circle"></i> View Results
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Questions</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        {% for question in questions %}
+                            <a href="{{ url_for('interview.question', answer_id=question.answer_id) }}" 
+                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center 
+                                      {% if question.answer_status == 'completed' %}list-group-item-success{% endif %}">
+                                <div>
+                                    <span class="fw-bold">Question {{ loop.index }}</span>
+                                    <div class="text-truncate" style="max-width: 200px;">{{ question.text[:50] }}{% if question.text|length > 50 %}...{% endif %}</div>
+                                </div>
+                                {% if question.answer_status == 'completed' %}
+                                    <span class="badge bg-success rounded-pill">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-secondary rounded-pill">
+                                        <i class="fas fa-microphone"></i>
+                                    </span>
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body text-center py-5">
+                        <div class="mb-4">
+                            <i class="fas fa-microphone-alt" style="font-size: 4rem; color: var(--primary-color);"></i>
+                        </div>
+                        <h3 class="mb-3">Ready to Start?</h3>
+                        <p class="lead mb-4">Select a question from the list to begin answering.</p>
+                        
+                        {% set first_pending = questions|selectattr('answer_status', 'equalto', 'pending')|first %}
+                        {% if first_pending %}
+                            <a href="{{ url_for('interview.question', answer_id=first_pending.answer_id) }}" class="btn btn-primary btn-lg">
+                                <i class="fas fa-play me-2"></i> Start Next Question
+                            </a>
+                        {% elif percentage == 100 %}
+                            <a href="{{ url_for('interview.complete', interview_id=interview.id) }}" class="btn btn-success btn-lg">
+                                <i class="fas fa-check-circle me-2"></i> View Your Results
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

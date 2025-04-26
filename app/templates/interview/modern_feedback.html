@@ -1,0 +1,163 @@
+{% extends "modern_layout.html" %}
+
+{% block title %}Answer Feedback{% endblock %}
+
+{% block authenticated_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold mb-1">Answer Feedback</h1>
+        <p class="text-muted">{{ profession.name }} - {{ interview.grade }}</p>
+    </div>
+    <div>
+        <a href="{{ url_for('interview.process', interview_id=interview.id) }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Back to Questions
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Question and Answer Section -->
+    <div class="col-lg-5 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white border-0 d-flex align-items-center p-4">
+                <div class="question-number-badge me-2">Q</div>
+                <h4 class="mb-0 fw-semibold">Question</h4>
+            </div>
+            <div class="card-body p-4">
+                <h5 class="fw-semibold mb-4">{{ question.question_text }}</h5>
+                
+                <div class="mb-4">
+                    <h6 class="fw-semibold text-primary mb-2">
+                        <i class="fas fa-microphone me-1"></i> Your Answer
+                    </h6>
+                    <p class="mb-3">{{ answer.transcribed_text }}</p>
+                    
+                    {% if answer.audio_path %}
+                        <div class="audio-player bg-light rounded p-3">
+                            <p class="text-sm text-muted mb-2">Listen to your recording:</p>
+                            <audio controls class="w-100">
+                                <source src="{{ url_for('static', filename=answer.audio_path) }}" type="audio/webm">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Feedback Section -->
+    <div class="col-lg-7 mb-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 p-4">
+                <div class="d-flex align-items-center">
+                    {% if answer.rating is not none %}
+                        {% if answer.rating >= 4.0 %}
+                            <div class="feedback-icon rating-excellent me-3">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-1">Outstanding Answer!</h3>
+                                <p class="text-muted mb-0">You've demonstrated excellent knowledge and communication skills</p>
+                            </div>
+                        {% elif answer.rating >= 3.0 %}
+                            <div class="feedback-icon rating-good me-3">
+                                <i class="fas fa-thumbs-up"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-1">Good Answer</h3>
+                                <p class="text-muted mb-0">Your response shows solid understanding and confidence</p>
+                            </div>
+                        {% elif answer.rating >= 2.0 %}
+                            <div class="feedback-icon rating-average me-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-1">Room for Improvement</h3>
+                                <p class="text-muted mb-0">You're on the right track but need a bit more depth</p>
+                            </div>
+                        {% else %}
+                            <div class="feedback-icon rating-poor me-3">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-1">Keep Practicing</h3>
+                                <p class="text-muted mb-0">Your answer needs more development and structure</p>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="feedback-icon me-3">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-1">Answer Feedback</h3>
+                            <p class="text-muted mb-0">Here's how you did on this question</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="card-body p-4">
+                {% if answer.rating is not none %}
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <div class="rating-stars me-2">
+                            {% for i in range(5) %}
+                                {% if i < answer.rating|int %}
+                                    <i class="fas fa-star"></i>
+                                {% elif i == answer.rating|int and answer.rating % 1 >= 0.5 %}
+                                    <i class="fas fa-star-half-alt"></i>
+                                {% else %}
+                                    <i class="far fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <span class="rating-value">{{ answer.rating }} / 5.0</span>
+                    </div>
+                {% endif %}
+                
+                <div class="feedback-content bg-light p-4 rounded">
+                    {{ answer.feedback|safe|nl2br }}
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{{ url_for('interview.process', interview_id=interview.id) }}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i> Back to Questions
+                    </a>
+                    
+                    {% if answer.rating is not none and answer.rating >= 4.0 %}
+                        <div class="d-flex align-items-center">
+                            <div class="text-success me-2">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="fw-medium">Great job with this answer!</div>
+                        </div>
+                    {% elif answer.rating is not none and answer.rating < 3.0 %}
+                        <div class="d-flex align-items-center">
+                            <div class="text-info me-2">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="fw-medium">Review the feedback to improve</div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tips Card -->
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-body p-4">
+                <h5 class="fw-semibold mb-3">
+                    <i class="fas fa-lightbulb text-warning me-2"></i> Tips for Improvement
+                </h5>
+                <ul class="mb-0">
+                    <li class="mb-2">Use the STAR method (Situation, Task, Action, Result) for behavioral questions</li>
+                    <li class="mb-2">Include specific examples from your experience</li>
+                    <li class="mb-2">Keep your answers concise but thorough - 1-2 minutes is ideal</li>
+                    <li class="mb-2">Practice active listening to ensure you fully understand the question</li>
+                    <li>End with a strong conclusion that summarizes your key points</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

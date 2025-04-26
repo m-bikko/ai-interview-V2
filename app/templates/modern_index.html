@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | AI Interview</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Modern CSS -->
+    <link id="main-css" rel="stylesheet" href="{{ url_for('static', filename='css/modern.css') }}">
+    
+    <!-- UI Scripts -->
+    <script src="{{ url_for('static', filename='js/redirect-to-modern.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui-switcher.js') }}" defer></script>
+</head>
+<body>
+    <!-- Modern Header -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container">
+            <a href="{{ url_for('main.index') }}" class="navbar-brand">
+                <span>AI</span> Interview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="{{ url_for('auth.register') }}">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="py-5" style="background: linear-gradient(135deg, var(--primary), var(--secondary));">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-white slide-up">
+                    <h1 class="fw-extrabold mb-4" style="font-size: 3.5rem;">Practice Interviews with AI Feedback</h1>
+                    <p class="lead fw-medium mb-4 opacity-90">Prepare for technical interviews in IT roles with tailored questions, instant AI-driven feedback, and personalized CV reviews.</p>
+                    <div class="d-flex gap-3 mt-5">
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-light px-5 py-3 fw-semibold">Get Started</a>
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light px-4 py-3">Log In</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block slide-up" style="animation-delay: 200ms;">
+                    <img src="{{ url_for('static', filename='img/hero-image.svg') }}" alt="AI Interview" class="img-fluid" style="filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5 slide-up">
+                <h2 class="fw-bold mb-3">Why Choose AI Interview?</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">Designed specifically for IT professionals to improve technical interview skills</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-hover shadow-sm h-100 slide-up" style="animation-delay: 100ms;">
+                        <div class="card-body p-4">
+                            <div class="d-inline-flex align-items-center justify-content-center p-3 rounded-circle mb-3" style="background-color: rgba(124, 77, 255, 0.1);">
+                                <i class="fas fa-laptop-code text-primary fa-lg"></i>
+                            </div>
+                            <h3 class="fw-semibold mb-3">Practice Realistic Interviews</h3>
+                            <p class="text-muted">Choose from 8 different IT professions and 3 seniority levels with tailored questions for each.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-hover shadow-sm h-100 slide-up" style="animation-delay: 200ms;">
+                        <div class="card-body p-4">
+                            <div class="d-inline-flex align-items-center justify-content-center p-3 rounded-circle mb-3" style="background-color: rgba(83, 109, 254, 0.1);">
+                                <i class="fas fa-robot text-secondary fa-lg"></i>
+                            </div>
+                            <h3 class="fw-semibold mb-3">AI-Powered Feedback</h3>
+                            <p class="text-muted">Get instant, detailed feedback on your answers powered by Google's Gemini AI.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-hover shadow-sm h-100 slide-up" style="animation-delay: 300ms;">
+                        <div class="card-body p-4">
+                            <div class="d-inline-flex align-items-center justify-content-center p-3 rounded-circle mb-3" style="background-color: rgba(0, 191, 165, 0.1);">
+                                <i class="fas fa-file-alt text-accent fa-lg"></i>
+                            </div>
+                            <h3 class="fw-semibold mb-3">CV Analysis & Review</h3>
+                            <p class="text-muted">Upload your CV for comprehensive AI analysis highlighting strengths and areas for improvement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Roles Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 slide-up">
+                    <h2 class="fw-bold mb-4">Improve Your Interview Skills</h2>
+                    <p class="lead mb-4">Our platform covers all major IT roles:</p>
+                    
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="badge badge-primary py-2 px-3">Backend Development</span>
+                        <span class="badge badge-primary py-2 px-3">Frontend Development</span>
+                        <span class="badge badge-primary py-2 px-3">Full Stack Development</span>
+                        <span class="badge badge-primary py-2 px-3">Data Science</span>
+                        <span class="badge badge-primary py-2 px-3">Product Management</span>
+                        <span class="badge badge-primary py-2 px-3">DevOps</span>
+                        <span class="badge badge-primary py-2 px-3">UX/UI Design</span>
+                        <span class="badge badge-primary py-2 px-3">Mobile Development</span>
+                    </div>
+                    
+                    <p class="mb-4">Each role includes tailored questions for Junior, Middle, and Senior levels to match your career stage.</p>
+                    
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg px-5 py-3 fw-semibold">Start Practicing Now</a>
+                </div>
+                
+                <div class="col-lg-6 slide-up" style="animation-delay: 200ms;">
+                    <div class="card shadow-sm mt-5 mt-lg-0 border-0">
+                        <div class="card-body p-0 overflow-hidden">
+                            <img src="{{ url_for('static', filename='img/dashboard-preview.png') }}" alt="Platform Preview" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 slide-up">
+                    <img src="{{ url_for('static', filename='img/how-it-works.svg') }}" alt="How It Works" class="img-fluid" style="max-width: 500px;">
+                </div>
+                
+                <div class="col-lg-6 slide-up" style="animation-delay: 200ms;">
+                    <h2 class="fw-bold mb-4">How It Works</h2>
+                    
+                    <div class="card shadow-sm mb-4 border-0">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 48px; height: 48px; font-weight: 600;">1</div>
+                                </div>
+                                <div class="ms-4">
+                                    <h4 class="fw-bold mb-2">Select Your Role & Level</h4>
+                                    <p class="text-muted mb-0">Choose from 8 different IT professions and specify your experience level.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm mb-4 border-0">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 48px; height: 48px; font-weight: 600;">2</div>
+                                </div>
+                                <div class="ms-4">
+                                    <h4 class="fw-bold mb-2">Record Your Answers</h4>
+                                    <p class="text-muted mb-0">Respond to technical interview questions by recording your answers directly in your browser.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 48px; height: 48px; font-weight: 600;">3</div>
+                                </div>
+                                <div class="ms-4">
+                                    <h4 class="fw-bold mb-2">Get AI Feedback</h4>
+                                    <p class="text-muted mb-0">Receive detailed AI-generated feedback on your answers' technical accuracy, relevance, and clarity.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-5" style="background: linear-gradient(135deg, var(--primary), var(--secondary));">
+        <div class="container py-5">
+            <div class="text-center text-white slide-up">
+                <h2 class="fw-bold mb-4">Ready to Ace Your Next Interview?</h2>
+                <p class="lead opacity-90 mb-5 mx-auto" style="max-width: 600px;">Join thousands of IT professionals who have improved their interview skills with our platform.</p>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg px-5 py-3 fw-semibold">Get Started for Free</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-4 bg-light">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0 text-muted">© {{ year if year else '2024' }} AI Interview · All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

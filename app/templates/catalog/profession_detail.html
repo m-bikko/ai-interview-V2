@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profession.name }} - {{ grade }} | AI Interview</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container">
+            <a class="navbar-brand text-white" href="{{ url_for('main.index') }}">
+                <span class="fw-bold">AI</span> Interview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('catalog.index') }}">Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('history.index') }}">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('cv.index') }}">CVs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('profile.index') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="d-flex align-items-center mb-4">
+            <h1 class="mb-0">{{ profession.name }} - {{ grade }}</h1>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="mb-3">Start a New Interview</h4>
+                        <p>This interview will consist of 5 random questions for a {{ grade }} {{ profession.name }}.</p>
+                        <p>You'll be able to record your answers and receive AI-generated feedback on each response.</p>
+                        <form action="{{ url_for('interview.start_interview', profession_id=profession.id, grade=grade) }}" method="POST">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-play-circle me-2"></i> Take Interview Now
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Interview Stats</h5>
+                                <p class="card-text">
+                                    <strong>You've completed:</strong> {{ total_interviews }} interviews in this category
+                                </p>
+                                {% if recent_interviews and recent_interviews[0].overall_rating %}
+                                    <p class="card-text">
+                                        <strong>Latest Rating:</strong> 
+                                        <span class="badge {% if recent_interviews[0].overall_rating >= 4.0 %}bg-success{% elif recent_interviews[0].overall_rating >= 3.0 %}bg-info{% elif recent_interviews[0].overall_rating >= 2.0 %}bg-warning{% else %}bg-danger{% endif %}">
+                                            {{ recent_interviews[0].overall_rating }} / 5.0
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if recent_interviews %}
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Recent Interview History</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Overall Rating</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for interview in recent_interviews %}
+                                    <tr>
+                                        <td>{{ interview.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                        <td>
+                                            {% if interview.overall_rating %}
+                                                <span class="badge {% if interview.overall_rating >= 4.0 %}bg-success{% elif interview.overall_rating >= 3.0 %}bg-info{% elif interview.overall_rating >= 2.0 %}bg-warning{% else %}bg-danger{% endif %}">
+                                                    {{ interview.overall_rating }} / 5.0
+                                                </span>
+                                            {% else %}
+                                                <span class="badge bg-secondary">Not rated</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if interview.completed_at %}
+                                                <span class="badge bg-success">Completed</span>
+                                            {% else %}
+                                                <span class="badge bg-warning">In Progress</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if interview.completed_at %}
+                                                <a href="{{ url_for('history.interview_detail', interview_id=interview.id) }}" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-eye"></i> View Details
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ url_for('interview.process', interview_id=interview.id) }}" class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-play"></i> Continue
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    {% if total_interviews > 5 %}
+                        <div class="text-center mt-3">
+                            <a href="{{ url_for('history.index') }}" class="btn btn-outline-primary">View All History</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

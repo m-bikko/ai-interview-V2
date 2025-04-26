@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profession.name }} - {{ grade }} | AI Interview</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container">
+            <a class="navbar-brand text-white" href="{{ url_for('main.index') }}">
+                <span class="fw-bold">AI</span> Interview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('catalog.index') }}">Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('history.index') }}">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('cv.index') }}">CVs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('profile.index') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <!-- Profession Detail Content -->
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>{{ profession.name }} - {{ grade }}</h1>
+            <a href="{{ url_for('catalog.index') }}" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left me-2"></i> Back to Catalog
+            </a>
+        </div>
+        
+        <div class="row">
+            <!-- Profession Info -->
+            <div class="col-md-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">About {{ profession.name }} - {{ grade }}</h5>
+                        <p class="card-text">{{ profession.description }}</p>
+                        <hr>
+                        <h6>What to expect in this interview:</h6>
+                        <ul>
+                            <li>Technical questions appropriate for {{ grade }} level {{ profession.name }}</li>
+                            <li>Professional feedback on your answers</li>
+                            <li>Performance analysis with areas for improvement</li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="{{ url_for('interview.start', profession_id=profession.id, grade=grade) }}" class="btn btn-primary">
+                                <i class="fas fa-play-circle me-2"></i> Start New Interview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interview History -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Previous Interviews</h5>
+                        <p class="text-muted">You have completed {{ total_interviews }} interview(s) for this position.</p>
+                        
+                        {% if recent_interviews %}
+                            <div class="list-group mt-3">
+                                {% for interview in recent_interviews %}
+                                    <a href="{{ url_for('history.detail', interview_id=interview.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span>
+                                            <i class="fas fa-calendar-check me-2 text-muted"></i>
+                                            {{ interview.created_at.strftime('%b %d, %Y') }}
+                                        </span>
+                                        <span class="badge 
+                                            {% if interview.score >= 80 %}bg-success
+                                            {% elif interview.score >= 60 %}bg-warning
+                                            {% else %}bg-danger{% endif %} rounded-pill">
+                                            {{ interview.score }}%
+                                        </span>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                            {% if total_interviews > 5 %}
+                                <div class="mt-3 text-end">
+                                    <a href="{{ url_for('history.index', profession_id=profession.id, grade=grade) }}" class="btn btn-sm btn-outline-secondary">
+                                        View All <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-info-circle me-2"></i> You haven't taken any interviews for this position yet.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
